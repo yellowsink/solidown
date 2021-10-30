@@ -1,11 +1,23 @@
 {
   "name": "solidown",
   "version": "1.0.1",
-  "description": "",
+  "description": "A high performance markdown component for SolidJS",
+  "keywords": [
+    "markdown",
+    "remarkable",
+    "solid",
+    "solidjs",
+    "solid-markdown",
+    "commonmark",
+    "component"
+  ],
+  "homepage": "https://yellowsink.vercel.app/solidown",
+  "author": "Yellowsink <yellowsink@protonmail.com> (https://yellowsink.vercel.app/)",
+  "repository": "github:yellowsink/solidown",
   "scripts": {
     "build": "rollup -c"
   },
-  "license": "BSD-3",
+  "license": "BSD-3-Clause",
   "devDependencies": {
     "@rollup/plugin-babel": "^5.3.0",
     "babel-preset-solid": "^1.2.0",
@@ -18,7 +30,6 @@
   "dependencies": {
     "remarkable": "^2.0.1"
   },
-
   "source": "lib/index.jsx",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
