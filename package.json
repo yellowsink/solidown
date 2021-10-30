@@ -1,12 +1,11 @@
 {
   "name": "solidown",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "scripts": {
     "build": "rollup -c"
   },
   "license": "BSD-3",
-  "source": "index.jsx",
   "devDependencies": {
     "@rollup/plugin-babel": "^5.3.0",
     "babel-preset-solid": "^1.2.0",
@@ -18,5 +17,22 @@
   },
   "dependencies": {
     "remarkable": "^2.0.1"
+  },
+
+  "source": "lib/index.jsx",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "solid": "./dist/source/index.jsx",
+      "import": "./dist/esm/index.js",
+      "browser": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "node": "./dist/cjs/index.js"
+    }
   }
 }
