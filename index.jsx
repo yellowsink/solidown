@@ -4,21 +4,36 @@ import { Remarkable } from "remarkable";
 export default ({ children, src, css, loading }) => {
   const getMarkdownSource = async () => await (await fetch(src)).text();
 
-  const [fetchSignal, setFetchSignal] = createSignal(false);
-  let [markdown] = src
+  const [fetchSignal, setFetchSignal] = createSignal();
+  const [markdown] = src
     ? createResource(fetchSignal, getMarkdownSource)
     : [() => children];
 
-  const md = new Remarkable();
+  setFetchSignal(0);
+
+  loading = loading ?? "Loading";
 
   const LoadingComponent = () =>
-    typeof loading === "string" ? <div class="solidown-loading">{loading}</div> : <loading />;
+    typeof loading === "string" ? (
+      <div class="solidown-loading">{loading}</div>
+    ) : (
+      loading
+    );
+
+  const md = new Remarkable("full", {
+		html: true
+	});
 
   return (
     <div class="solidown-wrapper">
-      <div class={`solidown-markdown-root`}>
-        {markdown() ? md.render(markdown()) : <LoadingComponent />}
-      </div>
+      {markdown() ? (
+        <div
+          class={`solidown-markdown-root`}
+          innerHTML={md.render(markdown())}
+        />
+      ) : (
+        <LoadingComponent />
+      )}
 
       {css ? <style>{css}</style> : []}
     </div>

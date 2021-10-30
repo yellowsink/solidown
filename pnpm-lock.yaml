@@ -6,11 +6,9 @@ specifiers:
   remarkable: ^2.0.1
   rollup: ^2.58.3
   rollup-preset-solid: ^1.0.1
-  uuid: ^8.3.2
 
 dependencies:
   remarkable: 2.0.1
-  uuid: 8.3.2
 
 devDependencies:
   '@rollup/plugin-babel': 5.3.0_rollup@2.58.3
@@ -817,8 +815,3 @@ packages:
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true
-
-  /uuid/8.3.2:
-    resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
-    hasBin: true
-    dev: false
