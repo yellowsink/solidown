@@ -2,7 +2,8 @@ import { createResource, createSignal } from "solid-js";
 import { Remarkable } from "remarkable";
 
 export default ({ children, src, css, loading }) => {
-  const getMarkdownSource = async () => await (await fetch(src)).text();
+  const fullSrc = document?.location ? new URL(src, document.location.origin).href : src;
+  const getMarkdownSource = async () => await (await fetch(fullSrc)).text();
 
   const [fetchSignal, setFetchSignal] = createSignal();
   const [markdown] = src
