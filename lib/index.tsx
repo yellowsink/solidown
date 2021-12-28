@@ -1,14 +1,22 @@
-import { createResource, createSignal } from "solid-js";
+import { createResource, createSignal, JSXElement } from "solid-js";
 import { Remarkable } from "remarkable";
 
-export default ({ children, src, css, loading }) => {
-  const fullSrc = document?.location ? new URL(src, document.location.origin).href : src;
-  const getMarkdownSource = async () => await (await fetch(fullSrc)).text();
+interface SolidownProps {
+  children: string
+  src?: string
+  css?: string
+  loading?: JSXElement | string
+}
+export default ({ children, src, css, loading }: SolidownProps) => {
+  let getMarkdownSource = async () => children;
+
+  if (src) {
+    const fullSrc = document?.location ? new URL(src, document.location.origin).href : src;
+    getMarkdownSource = async () => await (await fetch(fullSrc)).text();
+  }
 
   const [fetchSignal, setFetchSignal] = createSignal();
-  const [markdown] = src
-    ? createResource(fetchSignal, getMarkdownSource)
-    : [() => children];
+  const [markdown] = createResource(fetchSignal, getMarkdownSource)
 
   setFetchSignal(0);
 
@@ -30,7 +38,7 @@ export default ({ children, src, css, loading }) => {
       {markdown() ? (
         <div
           class={`solidown-markdown-root`}
-          innerHTML={md.render(markdown())}
+          innerHTML={md.render(markdown() ?? "")}
         />
       ) : (
         <LoadingComponent />
