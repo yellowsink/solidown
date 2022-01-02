@@ -2,6 +2,13 @@
 
 A high performance markdown component for SolidJS
 
+## Note:
+This component is efficientand works well,
+but I have started using [zero-md](https://zerodevx.github.io/zero-md/) in my own website,
+and it's very good as well.
+
+Just a heads up :)
+
 ## Installation
 ```
 npm i solidown
@@ -12,10 +19,10 @@ npm i solidown
 import Solidown from "solidown"
 
 // simple markdown renderer
-<Solidown>
+<Solidown>{`
 # Test
 **bold *and italic***
-</Solidown>
+`}</Solidown>
 
 // rendering from URL
 <Solidown src="https://raw.githubusercontent.com/yellowsink/solidown/master/README.md" />
@@ -40,8 +47,8 @@ import Solidown from "solidown"
         #solidown-markdown-root h1 {
             text-decoration-line: underline;
         }
-    `}>
+    `}>{`
 # Test
 **bold *and italic***
-</Solidown>
+`}</Solidown>
 ```
